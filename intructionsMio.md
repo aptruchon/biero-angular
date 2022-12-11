@@ -1,0 +1,8 @@
+- Créer votre application app-admin-biero (ou un nom à votre choix)
+- Créer vos composants (Liste, Modifier, Ajouter, service apibiero)
+- Créer vos routes (/ => Liste, /modifier/:id => Modifier, /ajouter => Ajouter)
+- Coder le composant Liste afin qu'il affiche la liste des bières (avec les méthodes à faire dans le service apibiero)
+- Coder le composant Modifier afin qu'il affiche les données d'une bière (avec la méthode à faire dans le service apibiero).
+- Lire la documentation des Formulaires (https://angular.io/guide/forms-overview)
+- Lire la documentation du client Http (https://angular.io/guide/http)
+- Écouter la vidéo d'intégration du Material design (https://www.youtube.com/watch?v=-es-01XfBgI). Même si vous ne voulez pas utiliser la librairie, ça vous donnera 2-3 pistes pour mieux comprendre Angular, ses composants et les services.
