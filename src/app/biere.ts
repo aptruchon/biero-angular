@@ -3,4 +3,5 @@ export interface Biere {
     nom: string;
     brasserie: string;
     description?: string;
+    image?: string;
 }

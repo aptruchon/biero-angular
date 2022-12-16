@@ -16,7 +16,6 @@ export class ListeBiereComponent {
   ngOnInit(){
     this.apiBiero.getBieres().subscribe((bieres)=>{
       this.bieres = bieres.data;
-      console.log(this.bieres);
     })
   }
 }

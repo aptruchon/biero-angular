@@ -1,1 +1,26 @@
-<p>detail-biere works!</p>
+<article>
+    <form *ngIf="uneBiere.id_biere == id; else attente"  [formGroup]="formModif">
+        <p>Nom: <input formControlName="nom"><span *ngIf="!formModif.controls['nom'].valid">  Erreur</span></p>
+        <p>Brasserie: <input formControlName="brasserie"></p>
+        <p>Description: <textarea formControlName="description"></textarea></p>
+        <p>Image: <input formControlName="image"></p>
+        <button [disabled]="!formModif.dirty || !formModif.valid" (click)="modifier()">Modifier</button> | 
+        <button [disabled]="formModif.pristine" (click)="annuler()">Annuler</button> | 
+        <button (click)="delete()">Supprimer</button>
+    </form>
+</article>
+<ng-template #attente>
+    <article>
+        Données en chargement...
+    </article>
+</ng-template>
+
+
+    <!-- <h1>{{uneBiere.nom}}</h1>
+    <h2>{{uneBiere.brasserie}}</h2>
+    <p>{{uneBiere.description}}</p>
+    <div>
+        {{uneBiere.image}}
+    </div> -->
+    
+

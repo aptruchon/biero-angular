@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { DetailBiereComponent } from './detail-biere/detail-biere.component';
 import { BiereComponent } from './biere/biere.component';
 import { NonTrouveComponent } from './non-trouve/non-trouve.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormAjoutComponent } from './form-ajout/form-ajout.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,15 @@ import { HttpClientModule } from '@angular/common/http';
     ListeBiereComponent,
     DetailBiereComponent,
     BiereComponent,
-    NonTrouveComponent
+    NonTrouveComponent,
+    FormAjoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
