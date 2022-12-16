@@ -12,6 +12,7 @@ import { BiereComponent } from './biere/biere.component';
 import { NonTrouveComponent } from './non-trouve/non-trouve.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormAjoutComponent } from './form-ajout/form-ajout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormAjoutComponent } from './form-ajout/form-ajout.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
