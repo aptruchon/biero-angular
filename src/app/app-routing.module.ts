@@ -6,8 +6,7 @@ import { ListeBiereComponent } from './liste-biere/liste-biere.component';
 import { NonTrouveComponent } from './non-trouve/non-trouve.component';
 
 const routes: Routes = [
-  {path: "", component:AccueilComponent},
-  {path: "biere", component:ListeBiereComponent},
+  {path: "", component:ListeBiereComponent},
   {path: "biere", component:ListeBiereComponent},
   {path: "biere/:id", component:DetailBiereComponent},
   {path: "**", component:NonTrouveComponent}
