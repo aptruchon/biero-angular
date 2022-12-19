@@ -1,4 +1,4 @@
-<h1>Liste des bières</h1>
+<a class="boutonAjout" routerLink="/biere/ajout" mat-raised-button color="primary" >Ajouter d'une bière</a>
     <table mat-table [dataSource]="dataSource" matSort matSortDisableClear matSortActive="date_ajout" matSortDirection="desc" class="mat-elevation-z8">
         <ng-container matColumnDef="id_biere">
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id_biere">id</th>

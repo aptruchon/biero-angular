@@ -30,6 +30,17 @@ export class ApiBieroService {
     }
     return this.http.post<Biere>(this.url + biere.id_biere, biere, httpOptions);
   }
+  ajoutBiere(biere:Biere):Observable<any>{
+    let httpOptions = {
+      headers : new HttpHeaders({
+        'Content-type' : 'application/json',
+        "Authorization" : "Basic " + btoa('biero:biero')
+      })
+    }
+    console.log(biere);
+    
+    return this.http.put<Biere>(this.url, biere, httpOptions);
+  }
 
   deleteBiere(produit: Biere):Observable<any>{
     let httpOptions = {

@@ -14,14 +14,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-modification-biere',
-  templateUrl: './modification-biere.component.html',
-  styleUrls: ['./modification-biere.component.scss']
+  selector: 'app-ajout-de-biere',
+  templateUrl: './ajout-de-biere.component.html',
+  styleUrls: ['./ajout-de-biere.component.scss']
 })
-export class ModificationBiereComponent {
-  id: number;
+export class AjoutDeBiereComponent {
   uneBiere: Biere; 
-  formModif: FormGroup;
+  formAjout: FormGroup;
   matcher = new MyErrorStateMatcher();
 
   constructor(private apiBiero: ApiBieroService, private route: ActivatedRoute, private router: Router){
@@ -29,59 +28,32 @@ export class ModificationBiereComponent {
   }
 
   ngOnInit(){
-    this.formModif = new FormGroup(
+    this.formAjout = new FormGroup(
       {
-        id_biere: new FormControl("", [Validators.required, Validators.minLength(3)]),
+        // id_biere: new FormControl("", [Validators.required, Validators.minLength(3)]),
         nom: new FormControl("", [Validators.required, Validators.minLength(3)]),
         brasserie: new FormControl("", [Validators.required, Validators.minLength(3)]),
         description: new FormControl("", [Validators.required, Validators.minLength(3)]),
         image: new FormControl("", [Validators.required]),
-        date_modif: new FormControl(""),
-        date_ajout: new FormControl(""),
-        actif: new FormControl(""),
+        // date_modif: new FormControl(""),
+        // date_ajout: new FormControl(""),
+        // actif: new FormControl(""),
       }
     );
-
-    this.route.params.subscribe((params)=>{
-      this.id = params["id"];
-
-      this.apiBiero.getBiere(this.id).subscribe((biere: any) => {
-        this.uneBiere = biere.data;
-
-        if(!this.uneBiere.image){
-          this.uneBiere.image = "WOW-BELLE-IMAGE.jeep-aigre";
-        }
-        this.formModif.setValue(this.uneBiere);
-      })
-    })
   }
 
-  modifier():void{
-    if(this.formModif.status == "VALID"){
-      this.uneBiere = this.formModif.value;
+  ajouter():void{
+    if(this.formAjout.status == "VALID"){
+      this.uneBiere = this.formAjout.value;
 
-      this.apiBiero.modifBiere(this.uneBiere).subscribe((data:any)=>{
+      this.apiBiero.ajoutBiere(this.uneBiere).subscribe((data:any)=>{
         // Valider l'opération
-        if(data.data == this.uneBiere.id_biere){
+        console.log(data.data);
+        
+        if(data.data){
           this.router.navigate(["biere"]);
         }
       })
     }
   }
-
-  delete():void{
-    this.apiBiero.deleteBiere(this.uneBiere).subscribe((data:any)=>{
-      this.router.navigate(["biere"]);
-    });
-  }
-
-  // soumettreNgModel():void{
-  //     this.apiBiero.modifBiere(this.uneBiere).subscribe((data:any)=>{
-
-  //       // Valider l'opération
-  //       if(data.data == this.uneBiere.id_biere){
-  //         this.router.navigate(["biere"]);
-  //       }
-  //     })
-  // }
 }

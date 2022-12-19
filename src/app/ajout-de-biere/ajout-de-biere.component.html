@@ -1,0 +1,30 @@
+<article>
+    <form class="form" [formGroup]="formAjout">
+        <mat-form-field class="full-width">
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="nom"
+            [errorStateMatcher]="matcher">
+        </mat-form-field>
+        
+        <mat-form-field class="full-width">
+            <mat-label>Brasserie</mat-label>
+            <input matInput formControlName="brasserie"
+            [errorStateMatcher]="matcher">
+        </mat-form-field>
+        
+        <mat-form-field class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"
+            [errorStateMatcher]="matcher"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Image</mat-label>
+            <input matInput formControlName="image"
+            [errorStateMatcher]="matcher">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" [disabled]="!formAjout.dirty || !formAjout.valid" (click)="ajouter()">Ajouter</button> | 
+        <a routerLink="/" mat-raised-button color="accent">Annuler</a>
+    </form>
+</article>

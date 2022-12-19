@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormAjoutComponent } from './form-ajout.component';
+import { AjoutDeBiereComponent } from './ajout-de-biere.component';
 
-describe('FormAjoutComponent', () => {
-  let component: FormAjoutComponent;
-  let fixture: ComponentFixture<FormAjoutComponent>;
+describe('AjoutDeBiereComponent', () => {
+  let component: AjoutDeBiereComponent;
+  let fixture: ComponentFixture<AjoutDeBiereComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormAjoutComponent ]
+      declarations: [ AjoutDeBiereComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormAjoutComponent);
+    fixture = TestBed.createComponent(AjoutDeBiereComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
