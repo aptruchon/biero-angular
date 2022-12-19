@@ -5,11 +5,11 @@ import { ApiBieroService } from '../api-biero.service';
 import { Biere } from '../biere';
 
 @Component({
-  selector: 'app-detail-biere',
-  templateUrl: './detail-biere.component.html',
-  styleUrls: ['./detail-biere.component.scss']
+  selector: 'app-modification-biere',
+  templateUrl: './modification-biere.component.html',
+  styleUrls: ['./modification-biere.component.scss']
 })
-export class DetailBiereComponent {
+export class ModificationBiereComponent {
   id: number;
   uneBiere: Biere; 
   formModif: FormGroup;
@@ -32,9 +32,6 @@ export class DetailBiereComponent {
       }
     );
 
-    console.log(this.formModif.status);
-    
-
     this.route.params.subscribe((params)=>{
       this.id = params["id"];
 
@@ -49,11 +46,8 @@ export class DetailBiereComponent {
   
   modifier():void{
     if(this.formModif.status == "VALID"){
-      console.log(this.formModif);
-      
       this.uneBiere = this.formModif.value;
-      console.log(this.uneBiere);
-      
+
       this.apiBiero.modifBiere(this.uneBiere).subscribe((data:any)=>{
         // console.log(data);
         // Valider l'opération
@@ -76,7 +70,7 @@ export class DetailBiereComponent {
 
   soumettreNgModel():void{
       this.apiBiero.modifBiere(this.uneBiere).subscribe((data:any)=>{
-        console.log(data);
+
         // Valider l'opération
         if(data.data == this.uneBiere.id_biere){
           this.router.navigate(["biere"]);
