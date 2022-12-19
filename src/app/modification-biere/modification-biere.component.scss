@@ -1,3 +1,12 @@
-.ng-invalid {
-    border: 1px solid red;
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.full-width {
+    width: 100%;
 }

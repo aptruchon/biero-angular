@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { EnteteComponent } from './entete/entete.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ListeBiereComponent } from './liste-biere/liste-biere.component';
-// import { DetailBiereComponent } from './detail-biere/detail-biere.component';
 import { ModificationBiereComponent } from './modification-biere/modification-biere.component'; 
 import { BiereComponent } from './biere/biere.component';
 import { NonTrouveComponent } from './non-trouve/non-trouve.component';
@@ -19,6 +18,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatTableModule} from '@angular/material/table'; 
 import {MatSortModule} from '@angular/material/sort';
+import {MatInputModule} from '@angular/material/input'; 
 
 @NgModule({
   declarations: [
@@ -26,7 +26,6 @@ import {MatSortModule} from '@angular/material/sort';
     EnteteComponent,
     AccueilComponent,
     ListeBiereComponent,
-    // DetailBiereComponent,
     ModificationBiereComponent,
     BiereComponent,
     NonTrouveComponent,
@@ -43,7 +42,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatToolbarModule,
     MatIconModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
