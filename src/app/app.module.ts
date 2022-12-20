@@ -19,6 +19,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import { AjoutDeBiereComponent } from './ajout-de-biere/ajout-de-biere.component'; 
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confirmation.component'; 
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { AjoutDeBiereComponent } from './ajout-de-biere/ajout-de-biere.component
     BiereComponent,
     NonTrouveComponent,
     AjoutDeBiereComponent,
+    DialogConfirmationComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { AjoutDeBiereComponent } from './ajout-de-biere/ajout-de-biere.component
     MatIconModule,
     MatTableModule,
     MatSortModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-<a class="boutonAjout" routerLink="/biere/ajout" mat-raised-button color="primary" >Ajouter d'une bière</a>
+<a class="boutonAjout" routerLink="/biere/ajout" mat-raised-button color="primary" >Ajouter une bière</a>
     <table mat-table [dataSource]="dataSource" matSort matSortDisableClear matSortActive="date_ajout" matSortDirection="desc" class="mat-elevation-z8">
         <ng-container matColumnDef="id_biere">
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id_biere">id</th>
@@ -30,12 +30,13 @@
         </ng-container>
         <ng-container matColumnDef="modif">
             <th mat-header-cell *matHeaderCellDef>Modifier</th>
-            <td mat-cell *matCellDef="let uneBiere"><a routerLink="/biere/{{uneBiere.id_biere}}"><mat-icon fontIcon="edit"></mat-icon></a></td>
+            <td mat-cell *matCellDef="let uneBiere"><a routerLink="/biere/{{uneBiere.id_biere}}"><mat-icon color="accent" fontIcon="edit"></mat-icon></a></td>
         </ng-container>
         <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef>Supprimer</th>
-            <td mat-cell *matCellDef="let uneBiere"><a routerLink="/"><mat-icon fontIcon="delete"></mat-icon></a></td>
+            <td mat-cell *matCellDef="let uneBiere"><a (click)="openDialog(uneBiere)"><mat-icon color="warn" fontIcon="delete"></mat-icon></a></td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+

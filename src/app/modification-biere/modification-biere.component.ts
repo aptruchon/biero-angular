@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiBieroService } from '../api-biero.service';
 import { Biere } from '../biere';
 import {ErrorStateMatcher} from '@angular/material/core';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confirmation.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -24,7 +26,7 @@ export class ModificationBiereComponent {
   formModif: FormGroup;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private apiBiero: ApiBieroService, private route: ActivatedRoute, private router: Router){
+  constructor(private apiBiero: ApiBieroService, private route: ActivatedRoute, private router: Router, public dialog: MatDialog){
     this.uneBiere = {id_biere: 0, nom: "", description: "", brasserie: "", image: ""};
   }
 
@@ -69,9 +71,20 @@ export class ModificationBiereComponent {
     }
   }
 
-  delete():void{
-    this.apiBiero.deleteBiere(this.uneBiere).subscribe((data:any)=>{
+  delete(uneBiere: any):void{
+    this.apiBiero.deleteBiere(uneBiere).subscribe((data:any)=>{
       this.router.navigate(["biere"]);
+    });
+  }
+
+  openDialog(uneBiere: any) {
+    let dialog = this.dialog.open(DialogConfirmationComponent, {data: uneBiere});
+
+    dialog.afterClosed().subscribe(result =>{
+      if(result === true){
+        this.delete(uneBiere);
+      }
+      
     });
   }
 
