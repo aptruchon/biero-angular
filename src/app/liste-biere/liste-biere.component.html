@@ -1,42 +1,47 @@
 <a class="boutonAjout" routerLink="/biere/ajout" mat-raised-button color="primary" >Ajouter une bière</a>
-    <table mat-table [dataSource]="dataSource" matSort matSortDisableClear matSortActive="date_ajout" matSortDirection="desc" class="mat-elevation-z8">
-        <ng-container matColumnDef="id_biere">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id_biere">id</th>
-            <td mat-cell *matCellDef="let uneBiere">{{uneBiere.id_biere}}</td>
-        </ng-container>
-        <ng-container matColumnDef="brasserie">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by brasserie">brasserie</th>
-            <td mat-cell *matCellDef="let uneBiere">{{uneBiere.brasserie}}</td>
-        </ng-container>
-        <ng-container matColumnDef="nom">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom">nom</th>
-            <td mat-cell *matCellDef="let uneBiere">{{uneBiere.nom}}</td>
-        </ng-container>
-        <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by description">description</th>
-            <td mat-cell *matCellDef="let uneBiere">{{uneBiere.description.slice(0, 100)}}...</td>
-        </ng-container>
-        <ng-container matColumnDef="image">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by image">image</th>
-            <td mat-cell *matCellDef="let uneBiere">{{uneBiere.image}}</td>
-        </ng-container>
-        <ng-container matColumnDef="date_ajout">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date_ajout">date_ajout</th>
-            <td mat-cell *matCellDef="let uneBiere">{{uneBiere.date_ajout}}</td>
-        </ng-container>
-        <ng-container matColumnDef="date_modif">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date_modif">date_modif</th>
-            <td mat-cell *matCellDef="let uneBiere">{{uneBiere.date_modif}}</td>
-        </ng-container>
-        <ng-container matColumnDef="modif">
-            <th mat-header-cell *matHeaderCellDef>Modifier</th>
-            <td mat-cell *matCellDef="let uneBiere"><a routerLink="/biere/{{uneBiere.id_biere}}"><mat-icon color="accent" fontIcon="edit"></mat-icon></a></td>
-        </ng-container>
-        <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef>Supprimer</th>
-            <td mat-cell *matCellDef="let uneBiere"><a (click)="openDialog(uneBiere)"><mat-icon color="warn" fontIcon="delete"></mat-icon></a></td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
+    <section class="wrapper">
+        <mat-form-field>
+            <mat-label>Filtre</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. blablabla" #input>
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSource" matSort matSortDisableClear matSortActive="date_ajout" matSortDirection="desc" class="mat-elevation-z8">
+            <ng-container matColumnDef="id_biere">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id_biere">id</th>
+                <td mat-cell *matCellDef="let uneBiere">{{uneBiere.id_biere}}</td>
+            </ng-container>
+            <ng-container matColumnDef="brasserie">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by brasserie">brasserie</th>
+                <td mat-cell *matCellDef="let uneBiere">{{uneBiere.brasserie}}</td>
+            </ng-container>
+            <ng-container matColumnDef="nom">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nom">nom</th>
+                <td mat-cell *matCellDef="let uneBiere">{{uneBiere.nom}}</td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by description">description</th>
+                <td mat-cell *matCellDef="let uneBiere">{{uneBiere.description.slice(0, 100)}}...</td>
+            </ng-container>
+            <ng-container matColumnDef="image">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by image">image</th>
+                <td mat-cell *matCellDef="let uneBiere">{{uneBiere.image}}</td>
+            </ng-container>
+            <ng-container matColumnDef="date_ajout">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date_ajout">date_ajout</th>
+                <td mat-cell *matCellDef="let uneBiere">{{uneBiere.date_ajout}}</td>
+            </ng-container>
+            <ng-container matColumnDef="date_modif">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date_modif">date_modif</th>
+                <td mat-cell *matCellDef="let uneBiere">{{uneBiere.date_modif}}</td>
+            </ng-container>
+            <ng-container matColumnDef="modif">
+                <th mat-header-cell *matHeaderCellDef>Modifier</th>
+                <td class="icones" mat-cell *matCellDef="let uneBiere"><a routerLink="/biere/{{uneBiere.id_biere}}"><mat-icon color="accent" fontIcon="edit"></mat-icon></a></td>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef>Supprimer</th>
+                <td class="icones" mat-cell *matCellDef="let uneBiere"><a (click)="openDialog(uneBiere)"><mat-icon color="warn" fontIcon="delete"></mat-icon></a></td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </section>    

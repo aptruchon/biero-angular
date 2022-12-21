@@ -60,7 +60,11 @@ export class ListeBiereComponent implements AfterViewInit {
       if(result === true){
         this.delete(uneBiere);
       }
-      
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
