@@ -39,23 +39,26 @@ export class ListeBiereComponent implements AfterViewInit {
     this.sort.sortChange.subscribe(() => this.dataSource.sort = this.sort);
   }
   
+  // Attribution et mise à jour de this.dataSource en temps réel
   toutesLesBieres(){
-    // Attribution et mise à jour de this.dataSource en temps réel
     this.apiBiero.getBieres().subscribe((bieres)=>{
       this.bieres = bieres.data;
       this.dataSource.data = this.bieres;
     })
   }
 
+  // Suppression d'une bière
   delete(uneBiere: any):void{
     this.apiBiero.deleteBiere(uneBiere).subscribe((data:any)=>{
       this.toutesLesBieres();
     });
   }
 
+  // Ouverture d'une fenêtre de dialogue
   openDialog(uneBiere: any) {
     let dialog = this.dialog.open(DialogConfirmationComponent, {data: uneBiere});
 
+    // Si l'utilisateur clique Oui (true) à la question "Êtes-vous sure...?", on supprime la bière
     dialog.afterClosed().subscribe(result =>{
       if(result === true){
         this.delete(uneBiere);
@@ -63,6 +66,7 @@ export class ListeBiereComponent implements AfterViewInit {
     });
   }
 
+  // Filtre de recherche du tableau
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

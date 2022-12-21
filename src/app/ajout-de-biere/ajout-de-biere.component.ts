@@ -30,18 +30,15 @@ export class AjoutDeBiereComponent {
   ngOnInit(){
     this.formAjout = new FormGroup(
       {
-        // id_biere: new FormControl("", [Validators.required, Validators.minLength(3)]),
         nom: new FormControl("", [Validators.required, Validators.minLength(3)]),
         brasserie: new FormControl("", [Validators.required, Validators.minLength(3)]),
         description: new FormControl("", [Validators.required, Validators.minLength(3)]),
         image: new FormControl("", [Validators.required]),
-        // date_modif: new FormControl(""),
-        // date_ajout: new FormControl(""),
-        // actif: new FormControl(""),
       }
     );
   }
 
+  // Ajout d'une bière si le status est VALID
   ajouter():void{
     if(this.formAjout.status == "VALID"){
       this.uneBiere = this.formAjout.value;

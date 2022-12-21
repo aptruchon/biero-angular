@@ -7,7 +7,7 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confirmation.component';
 
-/** Error when invalid control is dirty, touched, or submitted. */
+/** Erreur quand le contrôle est dirty, touched, ou submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -58,6 +58,7 @@ export class ModificationBiereComponent {
     })
   }
 
+  // Modifie une bière si le statut est VALID
   modifier():void{
     if(this.formModif.status == "VALID"){
       this.uneBiere = this.formModif.value;
@@ -71,30 +72,22 @@ export class ModificationBiereComponent {
     }
   }
 
+  // Suppression d'une bière
   delete(uneBiere: any):void{
     this.apiBiero.deleteBiere(uneBiere).subscribe((data:any)=>{
       this.router.navigate(["biere"]);
     });
   }
 
+  // Ouverture d'une fenêtre de dialogue
   openDialog(uneBiere: any) {
     let dialog = this.dialog.open(DialogConfirmationComponent, {data: uneBiere});
 
+    // Si l'utilisateur clique Oui (true) à la question "Êtes-vous sure...?", on supprime la bière
     dialog.afterClosed().subscribe(result =>{
       if(result === true){
         this.delete(uneBiere);
       }
-      
     });
   }
-
-  // soumettreNgModel():void{
-  //     this.apiBiero.modifBiere(this.uneBiere).subscribe((data:any)=>{
-
-  //       // Valider l'opération
-  //       if(data.data == this.uneBiere.id_biere){
-  //         this.router.navigate(["biere"]);
-  //       }
-  //     })
-  // }
 }
